@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghizlane Belkhanfar - Portfolio</title>
+    <style>
+        :root {
+            --primary: #00C4CC;
+            --secondary: #2D3748;
+            --background: #1A202C;
+            --text: #FFFFFF;
+            --light-text: #A0AEC0;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--secondary);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 1.5rem;
+        }
+        
+        nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            background-color: rgba(0, 196, 204, 0.1);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-size: 2.5rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 1rem auto;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--light-text);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--background);
+        }
+        
+        .btn-primary:hover {
+            background-color: #00B4BC;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(0, 196, 204, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary);
+            box-shadow: 0 0 30px rgba(0, 196, 204, 0.3);
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background-color: var(--secondary);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary);
+            margin-top: 0;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .skill-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .skill-list li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .skill-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+        
+        /* Services Section */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--secondary);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            margin-top: 0;
+        }
+        
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-card {
+            background-color: var(--secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+        
+        .portfolio-content h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .tag {
+            background-color: rgba(0, 196, 204, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+        }
+        
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-form {
+            background-color: var(--secondary);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #4A5568;
+            border-radius: 4px;
+            background-color: var(--background);
+            color: var(--text);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links a {
+            color: var(--primary);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="section hero">
+        <h1>Hi, I'm Ghizlane Belkhanfar</h1>
+        <h2>Aspiring Software Developer | MIAGE Student from Morocco</h2>
+        <p>Driven by the GCGO 'Innovate and Create Solutions' to tackle real-world challenges with technology.</p>
+        <div class="cta-buttons">
+            <a href="#about" class="btn btn-primary">Explore My Journey</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Ghizlane Belkhanfar</h3>
+                <p>Hi, I'm Ghizlane Belkhanfar, an aspiring software developer from Morocco, driven by the GCGO 'Innovate and Create Solutions' to tackle real-world challenges with technology. Currently pursuing a Master's in MIAGE with University of Pau and Adour Countries and training with ALX Africa, I hold a Professional License in MIAGE from Suptechnology and a 2-year Technicien en Maintenance et Support Informatique et Réseaux from OFPPT.</p>
+                <p>Over the past few weeks, I've built my first portfolio website, mastering HTML/CSS, and collaborated on a MIAGE project for business requirements analysis. I'm passionate about creative problem-solving, enjoy exploring new tech like Flutter and PHP, and unwind by capturing moments through photography.</p>
+            </div>
+            <img src="ghizlane-photo.jpg" alt="Ghizlane Belkhanfar" class="profile-img">
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Programming</h3>
+                <ul class="skill-list">
+                    <li>Flutter</li>
+                    <li>PHP</li>
+                    <li>Python</li>
+                    <li>Java</li>
+                    <li>HTML/CSS</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Frameworks</h3>
+                <ul class="skill-list">
+                    <li>Laravel</li>
+                    <li>Spring Boot</li>
+                    <li>JEE</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Tools</h3>
+                <ul class="skill-list">
+                    <li>Android Studio</li>
+                    <li>PhpMyAdmin</li>
+                    <li>XAMPP</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Soft Skills</h3>
+                <ul class="skill-list">
+                    <li>Problem-Solving</li>
+                    <li>Team Collaboration</li>
+                    <li>Creative Thinking</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <h2 class="section-title">My Services</h2>
+        <div class="services-container">
+            <div class="service-card" onclick="showServiceDetails('web-development')">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Web Development</h3>
+                <p>Custom website development using modern technologies like Laravel, Spring Boot, and JavaScript frameworks.</p>
+            </div>
+            <div class="service-card" onclick="showServiceDetails('mobile-apps')">
+                <div class="service-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Mobile Apps</h3>
+                <p>Cross-platform mobile application development using Flutter for both iOS and Android platforms.</p>
+            </div>
+            <div class="service-card" onclick="showServiceDetails('consulting')">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>IT Consulting</h3>
+                <p>Business requirements analysis and technical consulting for digital transformation projects.</p>
+            </div>
+        </div>
+        
+        <!-- Service Details Modal (hidden by default) -->
+        <div id="serviceModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2 id="modalTitle">Service Title</h2>
+                <p id="modalDescription">Service description will appear here.</p>
+                <h3>Technologies Used:</h3>
+                <ul id="modalTechnologies"></ul>
+                <button class="btn btn-primary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
+        <h2 class="section-title">Portfolio Highlights</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/600x400?text=MIAGE+Project" alt="MIAGE Project" class="portfolio-img">
+                <div class="portfolio-content">
+                    <h3>MIAGE Project: Business Requirements Analysis</h3>
+                    <div class="portfolio-tags">
+                        <span class="tag">UML</span>
+                        <span class="tag">Team Collaboration</span>
+                        <span class="tag">Analysis</span>
+                    </div>
+                    <p><strong>Purpose:</strong> Collaborated with a team to analyze business requirements for a university project.</p>
+                    <p><strong>Challenges:</strong> Coordinating with team members and understanding complex requirements.</p>
+                    <p><strong>Solutions:</strong> Used UML modeling and clear communication to deliver a detailed analysis.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/600x400?text=Portfolio+Website" alt="Portfolio Website" class="portfolio-img">
+                <div class="portfolio-content">
+                    <h3>Personal Portfolio Website</h3>
+                    <div class="portfolio-tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">Responsive Design</span>
+                        <span class="tag">GitHub Pages</span>
+                    </div>
+                    <p><strong>Purpose:</strong> Built a personal website to showcase my skills and journey.</p>
+                    <p><strong>Challenges:</strong> Learning HTML/CSS and structuring content effectively.</p>
+                    <p><strong>Solutions:</strong> Created a simple, responsive site hosted on GitHub Pages.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/600x400?text=Future+Project" alt="Future Project" class="portfolio-img">
+                <div class="portfolio-content">
+                    <h3>E-commerce Platform (Coming Soon)</h3>
+                    <div class="portfolio-tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">Payment Integration</span>
+                    </div>
+                    <p><strong>Purpose:</strong> Developing a full-featured e-commerce platform with payment integration.</p>
+                    <p><strong>Current Progress:</strong> Working on backend functionality with Laravel.</p>
+                    <p><strong>Features:</strong> Product catalog, shopping cart, user authentication.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-container">
+            <div>
+                <div class="contact-info">
+                    <h3>Email</h3>
+                    <a href="mailto:ghizlanebelkhanfar@gmail.com">ghizlanebelkhanfar@gmail.com</a>
+                </div>
+                <div class="contact-info">
+                    <h3>Professional Links</h3>
+                    <a href="https://www.linkedin.com/in/ghizlane-belkhanfar-65baaa307/" target="_blank">LinkedIn Profile</a>
+                    <a href="https://github.com/Tifloria1?tab=repositories" target="_blank">GitHub Repositories</a>
+                </div>
+                <div class="contact-info">
+                    <h3>Elevator Pitch</h3>
+                    <p>A brief video introduction about my professional journey and aspirations.</p>
+                    <div style="background: #2D3748; padding: 1rem; border-radius: 8px; text-align: center;">
+                        <p>Video will appear here</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Send Me a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/ghizlane-belkhanfar-65baaa307/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Tifloria1" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/+212610350746" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p class="copyright">© 2023 Ghizlane Belkhanfar. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Service details functionality
+        const services = {
+            'web-development': {
+                title: 'Web Development',
+                description: 'I create responsive, user-friendly websites using modern web technologies. Whether you need a simple portfolio site or a complex web application, I can deliver solutions tailored to your needs.',
+                technologies: ['Laravel', 'Spring Boot', 'JavaScript', 'HTML5/CSS3', 'React/Vue (optional)']
+            },
+            'mobile-apps': {
+                title: 'Mobile App Development',
+                description: 'I develop cross-platform mobile applications using Flutter, allowing your app to run on both iOS and Android with a single codebase. This approach saves time and money while delivering native-like performance.',
+                technologies: ['Flutter', 'Dart', 'Firebase', 'REST APIs', 'State Management']
+            },
+            'consulting': {
+                title: 'IT Consulting',
+                description: 'I offer technical consulting services to help businesses analyze their requirements and choose the right technology solutions. My expertise in business analysis helps bridge the gap between technical teams and stakeholders.',
+                technologies: ['UML Modeling', 'Requirement Analysis', 'System Design', 'Process Optimization']
+            }
+        };
+
+        function showServiceDetails(serviceId) {
+            const service = services[serviceId];
+            document.getElementById('modalTitle').textContent = service.title;
+            document.getElementById('modalDescription').textContent = service.description;
+            
+            const techList = document.getElementById('modalTechnologies');
+            techList.innerHTML = '';
+            service.technologies.forEach(tech => {
+                const li = document.createElement('li');
+                li.textContent = tech;
+                techList.appendChild(li);
+            });
+            
+            document.getElementById('serviceModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('serviceModal').style.display = 'none';
+        }
+
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send this data to a server
+            console.log('Form submitted:', { name, email, message });
+            
+            // Show success message
+            alert('Thank you for your message, ' + name + '! I will get back to you soon.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('serviceModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
